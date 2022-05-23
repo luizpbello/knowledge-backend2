@@ -2,10 +2,11 @@ const app = require('express')()
 const consign = require('consign')
 const db = require('./config/db') // IMPORTANDO CONFIGURAÇÃO DE CONEXÃO COM O BANCO DE DADOS
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 require('./config/mongodb')
 
-
+app.use(cors())
 app.db = db // ATRIBUINDO O KNEX CONIGURADO NA VARIÁVEL DB PARA USO NO APP(EXPRESS)
 app.mongoose = mongoose // ATRIBUINDO O MONGOOSE CONIGURADO NA VARIÁVEL DB PARA USO NO APP(EXPRESS)
 consign() // CHAMANDO O CONSIGN || PARA CADA THEN DO CONSIGN, ELE CARREGA O ARQUIVO JS REFERENCIADO
