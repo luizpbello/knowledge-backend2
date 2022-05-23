@@ -18,6 +18,6 @@ consign() // CHAMANDO O CONSIGN || PARA CADA THEN DO CONSIGN, ELE CARREGA O ARQU
     .then('./config/routes.js')
     .into(app) 
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Servidor rodando na porta 3000')
 })
