@@ -80,7 +80,7 @@ module.exports = app => { // O APP É O EXPRESS
             const rowsUpdate = await app.db('users')
                 .update({ deletedAt: new Date() })
                 .where({ id: req.params.id })
-            existOrError(rowsUpdate, 'Usuário não foi encontrado.')
+            existOrError(rowsUpdated, 'Usuário não foi encontrado.')
 
             res.status(204).send()
         } catch (msg) {

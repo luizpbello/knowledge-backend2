@@ -3,7 +3,8 @@ module.exports = app => {
     function existOrError(value, msg) { // VALIDA SE O CAMPO É NULO E RETORNA UM ERRO(MSG)
         if (!value) throw msg // SE O CAMPO FOR NULO, RETORNA A MSG
         if (Array.isArray(value) && value.length === 0) throw msg // SE O VALOR É UM ARRAY E TEM 0 ELEMENTOS, RETORNA UM ERRO
-        if (typeof value === 'string' && !value.trim()) throw msg // SE O VALOR É UMA STRING E ESTA VAZIA, RETORNA UM ERRO
+        if (typeof value === 'string' && !value.trim()) throw msg 
+        // SE O VALOR É UMA STRING E ESTA VAZIA, RETORNA UM ERRO
     }
     
     function notExistOrError(value, msg) { // VALIDA SE O CAMPO É NULO E RETORNA UM ERRO(MSG)
