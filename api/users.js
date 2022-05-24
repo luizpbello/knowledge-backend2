@@ -77,7 +77,7 @@ module.exports = app => { // O APP É O EXPRESS
             const articles = await app.db('articles') // PEGA OS ARTIGOS DO BANCO DE DADOS
                 .where({ userId: req.params.id }) // PEGA OS ARTIGOS PELO ID DO USUÁRIO
             notExistOrError(articles, 'Usuário possui artigos.') // VALIDA SE O USUÁRIO TEM ARTIGOS
-            const rowsUpdate = await app.db('users')
+            const rowsUpdated = await app.db('users')
                 .update({ deletedAt: new Date() })
                 .where({ id: req.params.id })
             existOrError(rowsUpdated, 'Usuário não foi encontrado.')
