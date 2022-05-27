@@ -4,6 +4,9 @@
 module.exports = {  
     client: 'pg',
     connection: {
+      //database: 'knowledge',
+      //user:     'postgres',
+      //password: '2611rs'      
       connectionString: process.env.DATABASE_URL,
       ssl: { rejectUnauthorized: false },
     },

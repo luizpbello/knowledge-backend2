@@ -52,12 +52,16 @@ module.exports = app => { // O APP É O EXPRESS
 
 
     }
-
-    const get = (req, res) => {
+    const limit = 5
+    const get = async (req, res) => {
+        const page = req.query.page || 1
+        const result = await app.db('users').count('id').first() // PEGA O TOTAL DE USUÁRIOS
+        const count = parseInt(result.count) // PEGA O TOTAL DE USUÁRIOS
         app.db('users') // PEGA O USUÁRIO DO BANCO DE DADOS
             .select('id', 'name', 'email','admin') // SELECIONA OS DADOS QUE QUER QUE SEJA EXIBIDO
-            .whereNull('deletedAt') // PEGA O USUÁRIO QUE NÃO FOI DELETADO
-            .then(users => res.json(users)) // RETORNA OS DADOS
+            .whereNull('deletedAt')
+            .limit(limit).offset(page * limit - limit) // LIMITA A QUANTIDADE DE USUÁRIOS E PEGA O USUÁRIO PELO ID
+            .then(users => res.json({ data: users, count, limit })) // RETORNA OS DADOS
             .catch(err => res.status(500).send({ error: err })) // SE HOUVER ALGUM ERRO, RETORNA UM ERRO
     }
 
